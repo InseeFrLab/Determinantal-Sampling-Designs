@@ -1,2 +1,2 @@
 # Determinantal-Sampling-Designs 
-test
+test $\lambda$
