@@ -1,7 +1,7 @@
 Introduction
 =============
 
-In the sequel, we provide some tools to help implement Determinantal Sampling Designs such as described in [_Determinantal Sampling Designs_](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533)
+In the sequel, we provide some tools to help implement Determinantal Sampling Designs such as described in [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533) or in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux).
 
 
 Introduction
