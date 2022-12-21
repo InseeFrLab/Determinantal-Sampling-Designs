@@ -1,5 +1,11 @@
 Introduction
 =============
+
+In the sequel, we provide some tools to help implement Determinantal Sampling Designs such as described in [_Determinantal Sampling Designs_](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533)
+
+
+Introduction
+=============
 The goal of sampling theory is to acquire knowledge of a parameter of interest using only partial information. This is done by means of a sampling design, through which a random subset is observed, and the construction of an estimator. The properties of the
 sampling design are thus of crucial importance to get “good” estimators. In practice, the following
 issues are fundamental: 
