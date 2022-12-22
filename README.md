@@ -91,6 +91,28 @@ phi  0.8000000+0i  0.2236068+0i -0.2236068+0i  0.2267787+0i  0.0690066+0i -0.050
 [7,] 0.03563483 -0.03984095 -0.03984095  0.0942809 -0.25819889  0.28284271  0.20000000
 ```
 
+We show to obtain the matrices $Q^{\Pi^\triangleright}$ described in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux)
+
+```
+
+omega=matrix(1,4,30)
+rho=matrix(0,4,29)
+# probas constantes et n=4 ne divise pas N=30
+K_divise_pas<-CaDsd(omega,rho,M=4,pi=matrix(4/30,1,30))
+# probas constantes et n=5 ne divise N=30
+omega=matrix(1,5,30)
+rho=matrix(0,5,29)
+K_divise<-CaDsd(omega,rho,M=5,pi=matrix(5/30,1,30))
+# proba quelconques et n=5 
+pi<-runif(matrix(0,1,30))
+pi<-5*pi/sum(pi)
+K_general<-CaDsd(omega,rho,M=5,pi=pi)
+
+
+
+```
+
+
 `Drawing_Dsd`
 =============
 
