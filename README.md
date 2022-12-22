@@ -5,6 +5,7 @@ In the sequel, we provide some R-tools to help implement Determinantal Sampling 
 
 1. `Ppi` provides a real matrix $\Phi^N$, whose size is $(n\times N)$, and such that ${\Phi^N}^\intercal\Phi^N=P^\Pi$, where $P^\Pi$ is the projection matrix associated to $\Pi$, such as in described [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533).
 2. `CaDsd` stands for _Contructing All Determintal Designs_. For a given vector $\Pi$,  `CaDsd` will provide __almost__ all the hermitian matrices whose diagonal is $\Pi$. `CaDsd` implements [Fickus and Al. (2013)]([https://www.sciencedirect.com/science/article/pii/S1063520312001297](https://link.springer.com/chapter/10.1007/978-0-8176-8373-3_2)) algorithm, according to the reparametrisation due to [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux).
+3. `Drawing_Dsd` will draw one or several samples from a random variable $\mathbb{S}$ whose law is a determinantal sampling design and whose kernel is a __projection__ matrix $K$. `Drawing_Dsd` relies on an algorithm introduced by [ Lavancier et collab., (2015)](https://www.jstor.org/stable/24775312#metadata_info_tab_contents), and presented in both [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533) and [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux).
 
 
 
@@ -90,6 +91,41 @@ phi  0.8000000+0i  0.2236068+0i -0.2236068+0i  0.2267787+0i  0.0690066+0i -0.050
 [7,] 0.03563483 -0.03984095 -0.03984095  0.0942809 -0.25819889  0.28284271  0.20000000
 ```
 
+`Drawing_Dsd`
+=============
+
+
+```
+> V<- Ppi(c(0.5, 0.75, 0.75, 0.2, 0.4, 0.6, 0.8))
+> K<- V%*%t(V)
+> echant1<-Drawing_Dsd(V,s=7,B=TRUE)
+> print(echant1)
+     Sample 1 Sample 2 Sample 3 Sample 4 Sample 5 Sample 6 Sample 7
+[1,]        0        0        0        0        0        0        0
+[2,]        1        1        1        1        1        1        1
+[3,]        1        1        1        1        1        1        1
+[4,]        0        1        0        0        1        0        0
+[5,]        0        0        1        1        0        1        0
+[6,]        1        1        1        1        1        0        1
+[7,]        1        0        0        0        0        1        1
+> echant2<-Drawing_Dsd(V,s=7,B=FALSE)
+> print(echant2)
+     Sample 1 Sample 2 Sample 3 Sample 4 Sample 5 Sample 6 Sample 7
+[1,]        2        1        1        1        2        1        1
+[2,]        3        2        2        2        3        2        2
+[3,]        6        4        6        5        5        6        5
+[4,]        7        6        7        6        7        7        7
+> omega=matrix(0,4,7)
+> rho=matrix(0,4,6)
+> K<-CaDsd(omega,rho,M=4,pi=c(0.5, 0.75, 0.75, 0.2, 0.4, 0.6, 0.8))
+> echant3<-Drawing_Dsd(K$EigenBasis,s=4,B=FALSE)
+> print(echant3)
+     Sample 1 Sample 2 Sample 3 Sample 4
+[1,]        2        1        1        1
+[2,]        3        2        2        2
+[3,]        5        4        3        4
+[4,]        6        7        5        5
+```
 
 Notation
 ------------
