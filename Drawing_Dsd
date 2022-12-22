@@ -1,0 +1,168 @@
+Drawing_Dsd <- function(v, s = 1, B = FALSE, seed = NULL){
+  
+
+  if (is.numeric(v)) {
+    return(.dsd_sampling_mult(v, s, B, seed))
+  }
+  else{ return(.dsd_sampling_mult_complex(v, s, B, seed))}
+}
+
+
+.dsd_sampling_mult_complex <- function(v, s, B, seed){
+
+  if (s == 1) {
+    return(.dsd_sampling_01_B_C_complex(v, B, seed))
+  }
+
+  else{
+    echant <- replicate(s, .dsd_sampling_01_B_C_complex(v, B, seed))
+    colnames(echant) <- paste("Sample", 1:s)
+    return(echant)
+  }
+}
+
+
+.dsd_sampling_mult <- function(v = NULL, s, B,seed){
+
+  if (s == 1) {
+    return(.dsd_sampling_01_B_C(v, B, seed))
+  }
+  else{
+    echant <- replicate(s, .dsd_sampling_01_B_C(v, B, seed))
+    colnames(echant) <- paste("Sample", 1:s)
+    return(echant)
+  }
+}
+
+.dsd_sampling_01_B_C_complex <- function(v, B = TRUE, seed){
+
+  indices <- .data <- NULL
+
+  N <- nrow(v)
+  n <- ncol(v)
+  echant <- rep(0, N)
+
+  if (!is.null(seed)) {
+    set.seed(seed)
+  }
+  ref <- stats::runif(n)
+  
+  #Step 1: Sampling the first element
+  w <- v
+
+  total <- 0
+  i <- 0
+  pi1 <- Re( diag( v %*% t(Conj(v)) ) )
+  
+  if (length(pi1[pi1 < 0]) != 0 | length(pi1[pi1 >= 1]) != 0) {
+    rlang::abort("The matrix v given as input doesn't suit to the input expected (See the functions pgd and periodic_dsd)")
+  }
+  
+  while (total < ref[1]) {
+    i <- i + 1
+    total <- total + ( pi1[i] / n )
+  }
+  echant[i] <- 1
+
+  M <- v[i,]
+  e1 <- M / c(Re (sqrt (t(M) %*% Conj(M)) ) )
+
+
+  #Step 2: Sampling the n-1 others elements
+  for (j in 1:(n-1)) {
+
+    r <- n-j
+    inter <- v %*% Conj(e1)
+    pi1 <- pi1 - t(inter * Conj(inter))
+    pi2 <- Re( 1 / r*pi1 )
+
+    
+    total <- 0
+    i <- 0
+
+    while (total < ref[j+1]) {
+      i <- i + 1
+      total <- total + pi2[i]
+    }
+    echant[i] <- 1
+
+
+    w <- w - t( t(Conj(e1)) %*% t(w) ) %*% t(e1)
+    L <- w[i, ]
+    e1 <- L / c(Re(sqrt (t(L) %*% Conj(L) )))
+
+  }
+  
+  if(B) {
+    return(echant)
+  }
+  else {
+    return((1:N)[echant==1])
+  }
+
+}
+.dsd_sampling_01_B_C <- function(v = NULL, B = TRUE, seed){
+
+  indices <- .data <- NULL
+
+  N <- nrow(v)
+  n <- ncol(v)
+  echant <- rep(0, N)
+  
+  if (!is.null(seed)) {
+    set.seed(seed)
+  }
+  ref <- stats::runif(n)
+
+  #First step: Sampling the first element
+  w <- v
+
+  
+  total <- 0
+  i <- 0
+  pi1 <- diag(v  %*% t(v))
+
+  while (total < ref[1]) {
+    i <- i + 1
+    total <- total + ( pi1[i] / n )
+  }
+  echant[i] <- 1
+
+
+  l <- v[i,]
+  e1 <- l / as.numeric( sqrt( t(l) %*% l ) )
+
+
+  #Step 2: Sampling the n-1 others elements
+  for (j in 1:(n-1)) {
+
+    r <- n-j
+    inter <- (v %*% e1)
+    pi1 <- pi1 - t( inter * inter )
+    pi2 <- 1 / r * pi1
+
+    
+    total <- 0
+    i <- 0
+
+    while (total < ref[j+1]) {
+      i <- i + 1
+      total <- total + pi2[i]
+    }
+    echant[i] <- 1
+
+    
+
+    w <- w - (w %*% e1) %*% t(e1)
+    L <- w[i,]
+    e1 <- L / as.numeric( sqrt( t(L) %*% L ))
+
+  }
+  if(B) {
+    return(echant)
+  }
+  else {
+    return((1:N)[echant==1])
+  }
+
+}
