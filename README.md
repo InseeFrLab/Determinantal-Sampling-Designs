@@ -11,19 +11,10 @@ In the sequel, we provide some R-tools to help implement Determinantal Sampling 
 `Ppi`
 =============
 
-Let $\Pi$ be a vector in $]0,1[^N$, such that $\overset{N}{\underset{k=1}\sum}\Pi_k=n\in \mathbb{N}$. _CaDsd($\Pi$) will construct an orthomormal eigenbasis for the projection matrix $P^\Pi$ that was introduced by [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533). The construction relies on the _fast_ algorithm available in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux) (Algorithm 7.1).  
+Let $\Pi$ be a vector in $]0,1[^N$, such that $\overset{N}{\underset{k=1}\sum}\Pi_k=n\in \mathbb{N}$. Ppi($\Pi$) will construct an orthomormal eigenbasis for the projection matrix $P^\Pi$ that was introduced by [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533). The construction relies on the _fast_ algorithm available in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux) (Algorithm 7.1).  
 
-The goal of sampling theory is to acquire knowledge of a parameter of interest using only partial information. This is done by means of a sampling design, through which a random subset is observed, and the construction of an estimator. The properties of the
-sampling design are thus of crucial importance to get “good” estimators. In practice, the following
-issues are fundamental: 
-<ul>
-<li>simplicity of the design (in terms of its definition, theory and/or drawing algorithm),</li>
-<li>knowledge of the first and, possibly, second order inclusion probabilities,</li>
-<li>control of the size of the sample,</li>
-<li>effective construction, in particular with prescribed unequal probabilities, </li>
-<li>statistical amenability (consistency, central limit theorem,...),</li>
-<li>low Mean Square Error (MSE)/Variance of specific estimators based on the design.</li>
-</ul>
+
+
 
 Notation
 ------------
