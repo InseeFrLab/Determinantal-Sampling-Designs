@@ -60,7 +60,7 @@ spec<- function(omega,M,pi,spectre=100){
 }
 
 
-Cadsd <- function(omega=matrix(0.5,M,length(pi)),rho=matrix(0.5,M,length(pi)-1),M=round(sum(pi),7),pi,spectre=100,U=diag(M),option=TRUE){
+CaDsd <- function(omega=matrix(0.5,M,length(pi)),rho=matrix(0.5,M,length(pi)-1),M=round(sum(pi),7),pi,spectre=100,U=diag(M),option=TRUE){
   
   
   if (as.integer(M)!=M) {
@@ -157,11 +157,11 @@ Cadsd <- function(omega=matrix(0.5,M,length(pi)),rho=matrix(0.5,M,length(pi)-1),
 
 #Exemples
 
-omega=matrix(0,4,10)
-rho=matrix(0,4,9)
+omega=matrix(1,6,10)
+rho=matrix(0,6,9)
 m_pi=c()
 for (k in 1:10){
   m_pi[k]=7*(11-k)/110
 }
-K<-Cadsd(omega,rho,M=4,pi=m_pi)
-print(K$EigenBasis)
+K<-CaDsd(omega,rho,M=6,pi=m_pi)
+print(K$spectrum)
