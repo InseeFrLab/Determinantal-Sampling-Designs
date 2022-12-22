@@ -11,9 +11,31 @@ In the sequel, we provide some R-tools to help implement Determinantal Sampling 
 `Ppi`
 =============
 
-Let $\Pi$ be a vector in $]0,1[^N$, such that $\overset{N}{\underset{k=1}\sum}\Pi_k=n\in \mathbb{N}$. Ppi($\Pi$) will construct an orthomormal eigenbasis for the projection matrix $P^\Pi$ that was introduced by [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533). The construction relies on the _fast_ algorithm available in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux) (Algorithm 7.1).  
+Let $\Pi$ be a vector in $\]0,1\[^N$, such that $\overset{N}{\underset{k=1}\sum}\Pi_k=n\in \mathbb{N}$. Ppi($\Pi$) will construct an orthomormal eigenbasis for the projection matrix $P^\Pi$ that was introduced by [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533). The construction relies on the _fast_ algorithm available in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux) (Algorithm 7.1).  
 
-
+> m_pi=runif(matrix(1,8,1))
+> m_pi=m_pi/sum(m_pi)*3
+> V<-Ppi(m_pi)
+> print(V)
+            [,1]        [,2]       [,3]
+[1,] 0.827128934  0.00000000  0.0000000
+[2,] 0.203800142  0.00000000  0.0000000
+[3,] 0.517741663 -0.15114423  0.0000000
+[4,] 0.040571390  0.50661593  0.0000000
+[5,] 0.066094257  0.82532058  0.0000000
+[6,] 0.009940189  0.12412338 -0.7799932
+[7,] 0.005968127  0.07452414  0.3014442
+[8,] 0.010857457  0.13557732  0.5483994
+> V%*%t(V)
+            [,1]        [,2]         [,3]         [,4]        [,5]         [,6]         [,7]         [,8]
+[1,] 0.684142274 0.168568995  0.428239110  0.033557771  0.05466847  0.008221818  0.004936410  0.008980517
+[2,] 0.168568995 0.041534498  0.105515825  0.008268455  0.01347002  0.002025812  0.001216305  0.002212751
+[3,] 0.428239110 0.105515825  0.290901009 -0.055566577 -0.09052270 -0.013614083 -0.008173947 -0.014870373
+[4,] 0.033557771 0.008268455 -0.055566577  0.258305733  0.42080208  0.063286168  0.037997252  0.069126133
+[5,] 0.054668472 0.013470019 -0.090522696  0.420802083  0.68552250  0.103098569  0.061900767  0.112612369
+[6,] 0.008221818 0.002025812 -0.013614083  0.063286168  0.10309857  0.623894875 -0.225814926 -0.410811611
+[7,] 0.004936410 0.001216305 -0.008173947  0.037997252  0.06190077 -0.225814926  0.096458072  0.175480411
+[8,] 0.008980517 0.002212751 -0.014870373  0.069126133  0.11261237 -0.410811611  0.175480411  0.319241034
 
 
 Notation
