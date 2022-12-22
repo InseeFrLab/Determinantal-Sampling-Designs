@@ -1,9 +1,9 @@
 Introduction
 =============
 
-In the sequel, we provide some tools to help implement Determinantal Sampling Designs such as described in [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533) or in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux). The main tools are :
+In the sequel, we provide some R-tools to help implement Determinantal Sampling Designs such as described in [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533) or in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux). The tools consist of the translation in $R$ of tools that were written at first in _SAS_. The translation is due to Kim Antunez and Fabrice Nathan Tchazou Kamwa_Ensae_, Jeanne Monnier from _Ecole Centrale de Lyon_, andLoik Acakpo Addra from _Gustave Eiffel University_.
 
-1. `Ppi` provides a real matrix $\Phi^N$, whose size is $(n\times N)$, and such that ${\Phi^N}^\intercal\Phi^N=P^\Pi$, where $P^\Pi$ is the matrix associated to $\Pi$, described by .</li>
+1. `Ppi` provides a real matrix $\Phi^N$, whose size is $(n\times N)$, and such that ${\Phi^N}^\intercal\Phi^N=P^\Pi$, where $P^\Pi$ is the projection matrix associated to $\Pi$, such as in described [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533).
 2. `CaDsd` stands for _Contructing All Determintal Designs_. For a given vector $\Pi$,  `CaDsd` will provide __almost__ all the hermitian matrices whose diagonal is $\Pi$. `BaDsd` implements [Fickus and Al. (2013)]([https://www.sciencedirect.com/science/article/pii/S1063520312001297](https://link.springer.com/chapter/10.1007/978-0-8176-8373-3_2)) algorithm, according to the reparametrisation due to [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux).
 
 
