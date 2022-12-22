@@ -94,7 +94,7 @@ phi  0.8000000+0i  0.2236068+0i -0.2236068+0i  0.2267787+0i  0.0690066+0i -0.050
 `Drawing_Dsd`
 =============
 
-Let $K$ be a projection matrix, and $\overline{\Phi}^\intercal$ be one of its orthonormal eigenbasis. $Drawing\_DSD(\overline{\Phi}^\intercal,s,B)$ will provide a set of $s$ drawings from $DSD(K)$. $B$ is a boolean variable, that will shape the output as shwon below. 
+Let $K$ be a projection matrix, and $\overline{\Phi}^\intercal$ be one of its orthonormal eigenbasis. `Drawing_DSD`$(\overline{\Phi}^\intercal,s,B)$ will provide a set of $s$ drawings from $DSD(K)$. $B$ is a boolean variable, that will shape the output as shwon below. 
 `Drawing_Dsd` can be used directly after `Ppi` or `CaDsd`. 
 
 ```
