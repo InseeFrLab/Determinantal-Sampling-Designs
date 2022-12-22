@@ -14,8 +14,8 @@ In the sequel, we provide some R-tools to help implement Determinantal Sampling 
 Let $\Pi$ be a vector in $\]0,1\[^N$, such that $\overset{N}{\underset{k=1}\sum}\Pi_k=n\in \mathbb{N}$. Ppi($\Pi$) will construct an orthomormal eigenbasis for the projection matrix $P^\Pi$ that was introduced by [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533). The construction relies on the _fast_ algorithm available in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux) (Algorithm 7.1).  
 
 ```
-> V<-Ppi(c(0.5, 0.75, 0.75, 0.2, 0.4, 0.6, 0.8))
-> print(V)
+> PhiNT<-Ppi(c(0.5, 0.75, 0.75, 0.2, 0.4, 0.6, 0.8))
+> print(PhiNT)
           [,1]       [,2]      [,3]       [,4]
 [1,] 0.7071068  0.0000000 0.0000000  0.0000000
 [2,] 0.5000000 -0.7071068 0.0000000  0.0000000
@@ -24,7 +24,9 @@ Let $\Pi$ be a vector in $\]0,1\[^N$, such that $\overset{N}{\underset{k=1}\sum}
 [5,] 0.0000000  0.0000000 0.6324555  0.0000000
 [6,] 0.0000000  0.0000000 0.5163978 -0.5773503
 [7,] 0.0000000  0.0000000 0.3651484  0.8164966
-> V%*%t(V)
+
+> K<-PhiNT%*%t(PhiNT)
+> print(K)
           [,1]       [,2]       [,3]      [,4]      [,5]       [,6]       [,7]
 [1,] 0.5000000  0.3535534  0.3535534 0.0000000 0.0000000  0.0000000  0.0000000
 [2,] 0.3535534  0.7500000 -0.2500000 0.0000000 0.0000000  0.0000000  0.0000000
@@ -33,7 +35,7 @@ Let $\Pi$ be a vector in $\]0,1\[^N$, such that $\overset{N}{\underset{k=1}\sum}
 [5,] 0.0000000  0.0000000  0.0000000 0.2828427 0.4000000  0.3265986  0.2309401
 [6,] 0.0000000  0.0000000  0.0000000 0.2309401 0.3265986  0.6000000 -0.2828427
 [7,] 0.0000000  0.0000000  0.0000000 0.1632993 0.2309401 -0.2828427  0.8000000
-```
+> ```
 
 
 Notation
