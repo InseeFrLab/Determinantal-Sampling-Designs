@@ -8,8 +8,11 @@ In the sequel, we provide some R-tools to help implement Determinantal Sampling 
 
 
 
-Introduction
+`Ppi`
 =============
+
+Let $\Pi$ be a vector in $]0,1[^N$, such that $\overset{N}{\underset{k=1}\sum}\Pi_k=n\in \mathbb{N}$. _CaDsd($\Pi$) will construct an orthomormal eigenbasis for the projection matrix $P^\Pi$ that was introduced by [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533). The construction relies on the _fast_ algorithm available in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux) (Algorithm 7.1).  
+
 The goal of sampling theory is to acquire knowledge of a parameter of interest using only partial information. This is done by means of a sampling design, through which a random subset is observed, and the construction of an estimator. The properties of the
 sampling design are thus of crucial importance to get “good” estimators. In practice, the following
 issues are fundamental: 
