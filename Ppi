@@ -1,7 +1,6 @@
 Ppi <- function(Pi) {
   
   N <- length(Pi)
-  
   #SOME ERROR MESSAGES
   if (N < 2) {
     rlang::abort("The sampling designs should be define on a set of more than one element. (length(Pi) > 1)")
@@ -25,12 +24,12 @@ Ppi <- function(Pi) {
   sum <-0
   r<-1
   r_prev<-0
-  
+  n_<-sum(Pi)
   
   for (k in 1:N) {
     prev_sum<-sum
     sum<-sum+Pi[k]
-    if (sum>=r)
+        if (sum>=r)
     {
       kr[r] <- k
       alpha[k] <-r-prev_sum
@@ -50,9 +49,15 @@ Ppi <- function(Pi) {
     
 }
 
+  # ce point n'est pas joli, mais je n'ai pas trouvé l'erreur. A retravailler..
+  print(kr)
+  if(max(kr)!=length(Pi)){
+    kr<-cbind(kr,length(Pi))
+    r<-r+1
+    r_prev<-r_prev+1}
+  print(kr)
   V <- matrix(0, nrow = N , ncol = r_prev)
   V[1, 1] = 1
-  
   if ((r_prev-1) != 0) {
     for (r in 1:(r_prev-1)) {
       V[kr[r] + 1, r + 1] = 1
@@ -68,6 +73,3 @@ Ppi <- function(Pi) {
     return(V)
       }
   
-
-#example
-Ppi(c(1/2,3/4,3/4,1/5,2/5,3/5,4/5))
