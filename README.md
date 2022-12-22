@@ -11,7 +11,7 @@ In the sequel, we provide some R-tools to help implement Determinantal Sampling 
 `Ppi`
 =============
 
-Let $\Pi$ be a vector in $\]0,1\[^N$, such that $\overset{N}{\underset{k=1}\sum}\Pi_k=n\in \mathbb{N}$. Ppi($\Pi$) will construct an orthomormal eigenbasis for the projection matrix $P^\Pi$ that was introduced by [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533). The construction relies on the _fast_ algorithm available in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux) (Algorithm 7.1).  
+Let $\Pi$ be a vector in $\]0,1\[^N$, such that $\overset{N}{\underset{k=1}\sum}\Pi_k=n\in \mathbb{N}$. Ppi($\Pi$) will construct an orthomormal eigenbasis for the projection matrix $P^\Pi$ that was introduced by [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533). The construction relies on the _fast_ algorithm available in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux) (Algorithm 7.1).  We give below an example for $\Pi=(0.5,0.75,0.75,0.2,0.4,0.6,0.8)^\intercal$. The first matrix is the eigen basis, the second is $K=P^\Pi$. 
 
 ```
 > PhiNT<-Ppi(c(0.5, 0.75, 0.75, 0.2, 0.4, 0.6, 0.8))
@@ -37,6 +37,8 @@ Let $\Pi$ be a vector in $\]0,1\[^N$, such that $\overset{N}{\underset{k=1}\sum}
 [7,] 0.0000000  0.0000000  0.0000000 0.1632993 0.2309401 -0.2828427  0.8000000
 > ```
 
+`CaDsd`
+=============
 
 Notation
 ------------
