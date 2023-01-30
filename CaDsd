@@ -14,8 +14,7 @@ spec<- function(omega,M,pi,spectre=100){
       B=1
       for(i in 1:(M-j)){
         B=min(B,(mu-cumsum_1-sum(pi_down[1:(M-j-i+1)]))/i)
-        print(B)
-      }
+            }
       B=min(B,(mu-cumsum_1)/(M-j+1))
       spectre[j]=A+omega[j,N]*(B-A)
       lambda=spectre[j]
@@ -69,7 +68,6 @@ CaDsd <- function(omega=matrix(0.5,M,length(pi)),rho=matrix(0.5,M,length(pi)-1),
   N=length(pi)
   rho=round(rho*2*3.141593,7)
   mat_spectre=round(spec(omega,M,pi,spectre),7)
-  print(mat_spectre)
   pi_up=pi[order(pi)]
   pi_down=pi[order(pi, decreasing = TRUE)]
   phi=round(sqrt(pi_down[1])*U[,1],7)
