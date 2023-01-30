@@ -44,7 +44,7 @@ Let $\Pi$ be a vector in $\]0,1\[^N$, such that $\overset{N}{\underset{k=1}\sum}
 `CaDsd`
 =============
 
-Let $\Pi$ a vector in $\]0,1\[^N$, such that $\underset{k=1}{\overset{N}\sum}\Pi_k=\mu \in \mathbb{R}^+$. Let $M\leq \mu$ be an integer and $\Omega$ and $\rho$ two matrices whose size is respectively $(M\times N)$ and $(M\times (N-1))$ and whose entries lie in $\[0,1\]$. `CaDsd`$(\Pi,M,\Omega,\rho)$ provides a list that consists of : 
+Let $\Pi$ a vector in $\]0,1\[^N$, such that $\underset{k=1}{\overset{N}\sum}\Pi_k=\mu \in \mathbb{R}^+$. Let $M\geq \mu$ be an integer and $\Omega$ and $\rho$ two matrices whose size is respectively $(M\times N)$ and $(M\times (N-1))$ and whose entries lie in $\[0,1\]$. `CaDsd`$(\Pi,M,\Omega,\rho)$ provides a list that consists of : 
 
 1. the hemitian matrix $K^{\Pi^\triangleright}(M,\Omega,\rho)$ such as described in  [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux), where the entries of $\Pi^\triangleright$ are those of $\Pi$ in descending order.
 2. the sequence of spectra of all $K^{\Pi^\triangleright}(M,\Omega,\rho)$'s principal submatrices
