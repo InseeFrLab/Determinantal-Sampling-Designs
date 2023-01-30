@@ -92,7 +92,7 @@ phi  0.8000000+0i  0.2236068+0i -0.2236068+0i  0.2267787+0i  0.0690066+0i -0.050
 [7,] 0.03563483 -0.03984095 -0.03984095  0.0942809 -0.25819889  0.28284271  0.20000000
 ```
 
-We show to obtain the matrices $Q^{\Pi^\triangleright}$ described in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux)
+We show how to obtain the matrices $Q^{\Pi^\triangleright}$ described in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux)
 
 ```
 
