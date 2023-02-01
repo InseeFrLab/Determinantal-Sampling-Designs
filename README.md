@@ -6,7 +6,7 @@ In the sequel, we provide some R-tools to help implement Determinantal Sampling 
 1. `Ppi` provides a real matrix ${\Phi^N}^\intercal$, whose size is $(N\times n)$, and such that ${\Phi^N}^\intercal\Phi^N=P^\Pi$, where $P^\Pi$ is the projection matrix associated to $\Pi$, such as in described [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533).
 2. `CaDsd` stands for _Contructing All Determintal Designs_. For a given vector $\Pi$,  `CaDsd` will provide __almost__ all the hermitian contracting matrices whose diagonal is $\Pi$. `CaDsd` implements [Fickus and Al. (2013)](https://link.springer.com/chapter/10.1007/978-0-8176-8373-3_2) algorithm, according to the reparametrisation due to [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux).
 3. `Drawing_Dsd` will draw one or several samples from a random variable $\mathbb{S}$ whose law is a determinantal sampling design and whose kernel is a __projection__ matrix $K$. `Drawing_Dsd` relies on an algorithm introduced by [ Lavancier et collab., (2015)](https://www.jstor.org/stable/24775312#metadata_info_tab_contents), and presented in both [Loonis and Mary (2019)](https://www.sciencedirect.com/science/article/abs/pii/S0378375818300533) and [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux).
-4. `Reciprocal_CaDsd` will provide the set of parameters that led to an hermitian contracting matrix $K^{\Pi^\triangleright}$ according to [Fickus and Al. (2013)](https://link.springer.com/chapter/10.1007/978-0-8176-8373-3_2) algorithm. 
+4. `Reciprocal_CaDsd` will provide the set of parameters that led to an hermitian contracting matrix $K^{\Pi^\triangleright}$ according to [Fickus and Al. (2013)](https://link.springer.com/chapter/10.1007/978-0-8176-8373-3_2) algorithm, using the implementation described in [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux).
 
 `Ppi`
 =============
@@ -150,3 +150,8 @@ Let $K$ be a __projection__ matrix, and $\overline{\Phi}^\intercal$ be one of it
 [3,]        5        4        3        4
 [4,]        6        7        5        5
 ```
+
+`Reciprocal_CaDsd`
+=============
+
+Let $K^\Pi$ be a $(N \times N)$ hermitian contracting matrix whose diagonal is $\Pi$. Let $\Sigma^\intercal$ be a permutation matrix such that $\Pi^\triangleright=\Sigma^\intercal\Pi$. 
