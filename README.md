@@ -154,4 +154,4 @@ Let $K$ be a __projection__ matrix, and $\overline{\Phi}^\intercal$ be one of it
 `Reciprocal_CaDsd`
 =============
 
-Let $K^\Pi$ be a $(N \times N)$ hermitian contracting matrix whose diagonal is $\Pi$. Let $\Sigma^\intercal$ be a permutation matrix such that $\Pi^\triangleright=\Sigma^\intercal\Pi$. 
+Let $K^\Pi$ be a $(N \times N)$ hermitian contracting matrix whose diagonal is $\Pi$. Let $\Sigma^\intercal$ be a permutation matrix such that $\Pi^\triangleright=\Sigma^\intercal\Pi$, where the entries of $\Pi^\triangleright$ are those of $\Pi$ in descending order. According to [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux), relying on [Fickus and Al. (2013)](https://link.springer.com/chapter/10.1007/978-0-8176-8373-3_2), there is a set of multidimensionnal paramaters $(\Omega,\{V^k\}_{k=1}^{N-1})$, so that    
