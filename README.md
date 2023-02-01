@@ -46,7 +46,7 @@ Let $\Pi$ be a vector in $\]0,1\[^N$, such that $\overset{N}{\underset{k=1}\sum}
 
 Let $\Pi$ a vector in $\]0,1\[^N$, such that $\underset{k=1}{\overset{N}\sum}\Pi_k=\mu \in \mathbb{R}^+$. Let $M\geq \mu$ be an integer and $\Omega$ and $\rho$ two matrices whose size is respectively $(M\times N)$ and $(M\times (N-1))$ and whose entries lie in $\[0,1\]$. `CaDsd`$(\Pi,M,\Omega,\rho)$ provides a list that consists of : 
 
-1. the hemitian matrix $K^{\Pi^\triangleright}(M,\Omega,\rho)$ such as described in  [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux), where the entries of $\Pi^\triangleright$ are those of $\Pi$ in descending order.
+1. the hemitian matrix $K^{\Pi^\triangleright}(M,\Omega,\rho)$ such as described in  [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux), where the entries of $\Pi^\triangleright$ are those of $\Pi$ in descending order. $K^{\Pi^\triangleright}(M,\Omega,\rho)$ will be a __projection__ matrix iff $M=\mu=n \in \mathbb{N}^*$.
 2. the sequence of spectra of all $K^{\Pi^\triangleright}(M,\Omega,\rho)$'s principal submatrices
 3. an eigenbasis for $K^{\Pi^\triangleright}(M,\Omega,\rho)$.   
 
@@ -108,17 +108,19 @@ K_divise<-CaDsd(omega,rho,M=5,pi=matrix(5/30,1,30))
 pi<-runif(matrix(0,1,30))
 pi<-5*pi/sum(pi)
 K_general<-CaDsd(omega,rho,M=5,pi=pi)
-
-
-
 ```
 
+`Periodic_Dsd`
+=============
+
+Let $p,N,n$ be three integers such that $n \leq N$ and $p$ and $N$ are prime. There exists a __projection__ matrix $K^{p,N,n}$ such that $K^{p,N,n}_{kl}=\frac{1}{N}\frac{\sin(\frac{np(k-l)\pi}{N})}{\sin(\frac{p(k-l)\pi}{N})}e^{\frac{i p(n-1)(k-l)\pi}{N}}$ and 
+ 
 
 `Drawing_Dsd`
 =============
 
 Let $K$ be a __projection__ matrix, and $\overline{\Phi}^\intercal$ be one of its orthonormal eigenbasis. `Drawing_DSD`$(\overline{\Phi}^\intercal,s,B)$ will provide a set of $s$ drawings from $DSD(K)$. $B$ is a boolean variable, that will shape the output as shwon below. 
-`Drawing_Dsd` can be used directly after `Ppi`, `CaDsd`, `Periodic_Dsd`. 
+`Drawing_Dsd` can be used directly after `Ppi`, `CaDsd` or `Periodic_Dsd`. 
 
 ```
 > Phi<- Ppi(c(0.5, 0.75, 0.75, 0.2, 0.4, 0.6, 0.8))
@@ -153,23 +155,26 @@ Let $K$ be a __projection__ matrix, and $\overline{\Phi}^\intercal$ be one of it
 ```
 
 `Reciprocal_CaDsd`
-=============
+=================
 
-Let $K^\Pi$ be a $(N \times N)$ hermitian contracting matrix whose diagonal is $\Pi$. Let $\Sigma^\intercal$ be a permutation matrix such that $\Pi^\triangleright=\Sigma^\intercal\Pi$, where the entries of $\Pi^\triangleright$ are those of $\Pi$ in descending order. According to [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux),there is a set of multidimensionnal paramaters $(\Omega,\\{V^k\\}_{k=1}^{N-1})$, that leads to $K^{\Pi^\triangleright}=\Sigma^\intercal K^\Pi \Sigma$ when using [Fickus and Al. (2013)](https://link.springer.com/chapter/10.1007/978-0-8176-8373-3_2) algorithm. `Reciprocal_CaDsd` will provide a list that consists of these parameters, along with $K^{\Pi^\triangleright}$ and $\rho$, where $rho$ is a real matrix, whose $k^{th}$ column is $\rho_k$ and such that $V^k$'s diagonal is given by $\exp(2i\pi\rho_k)$. 
+Let $K^\Pi$ be a $(N \times N)$ hermitian contracting matrix whose diagonal is $\Pi$. Let $\Sigma^\intercal$ be a permutation matrix such that $\Pi^\triangleright=\Sigma^\intercal\Pi$, where the entries of $\Pi^\triangleright$ are those of $\Pi$ in descending order. According to [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux),there is a set of multidimensionnal paramaters $(\Omega,\\{V^k\\}_{k=1}^{N-1})$, that leads to $K^{\Pi^\triangleright}=\Sigma^\intercal K^\Pi \Sigma$ when using [Fickus and Al. (2013)](https://link.springer.com/chapter/10.1007/978-0-8176-8373-3_2) algorithm (see `CaDsd`). `Reciprocal_CaDsd` provides a list that consists of these parameters, along with $K^{\Pi^\triangleright}$ and $\rho$, where $rho$ is a real matrix, whose $k^{th}$ column is $\rho_k$ and such that $V^k$'s diagonal is given by $\exp(2i\pi\rho_k)$. 
 
 ```
-omega=matrix(runif(50),nrow=5)
-rho=matrix(runif(45),nrow=5)
+M<-5
+N<-10
+n<-3
+omega=matrix(runif(N*M),nrow=M)
+rho=matrix(runif((N-1)*M),nrow=M)
  
  m_pi=c()
 for (k in 1:10){
-   m_pi[k]=6*k/110
+   m_pi[k]=2*n*k/(N*(N+1))
  }
  
  
- fic1<-CaDsd(omega,rho,M=5,pi=m_pi)
+ fic1<-CaDsd(omega,rho,M,pi=m_pi)
  Rfic1=Reciprocal_CaDsd(fic1$K)
- fic2<-CaDsd(Rfic1$omega,Rfic1$rho,M=5,pi=m_pi)
+ fic2<-CaDsd(Rfic1$omega,Rfic1$rho,M,pi=m_pi)
  
  print(omega)
           [,1]      [,2]      [,3]      [,4]      [,5]      [,6]      [,7]      [,8]       [,9]      [,10]
