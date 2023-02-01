@@ -47,7 +47,7 @@ Let $\Pi$ a vector in $\]0,1\[^N$, such that $\underset{k=1}{\overset{N}\sum}\Pi
 
 1. the hemitian matrix $K^{\Pi^\triangleright}(M,\Omega,\rho)$ such as described in  [Loonis (2023)](https://www.researchgate.net/publication/359095103_Construire_tous_les_plans_de_sondage_determinantaux), where the entries of $\Pi^\triangleright$ are those of $\Pi$ in descending order. $K^{\Pi^\triangleright}(M,\Omega,\rho)$ will be a __projection__ matrix iff $M=\mu=n \in \mathbb{N}^*$.
 2. the sequence of spectra of all $K^{\Pi^\triangleright}(M,\Omega,\rho)$'s principal submatrices
-3. an eigenbasis for $K^{\Pi^\triangleright}(M,\Omega,\rho)$.   
+3. an eigenbasis $\overline{\Phi^{p,N,n}}^\intercal$ for $K^{\Pi^\triangleright}(M,\Omega,\rho)$, that directly be used to draw a sample, when $K^{\Pi^\triangleright}(M,\Omega,\rho)$ is a __projection__ matrix.    
 
 In the following example, we consider $\Pi=(0.5,0.75,0.75,0.2,0.4,0.6,0.8)^\intercal$ and observe that $K^{\Pi^\triangleright}(M,0^{(4 \times 7)},0^{(4\times 6})=H_N\odot P^{\Pi^\triangleright}$, where $\odot$ stands for the Hadamard product and $H_N$ is an hermitian matrix, whose 
 diagonal entries are $1$ and off-diagonal entries's modulus is $1$.
