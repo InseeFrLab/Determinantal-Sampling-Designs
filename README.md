@@ -112,7 +112,7 @@ K_general<-CaDsd(omega,rho,M=5,pi=pi)
 `Periodic_Dsd`
 =============
 
-Let $p,N,n$ be three integers such that $n \leq N$ and $p$ and $N$ are prime. There exists a __projection__ matrix $K^{p,N,n}$ such that $K_{kl}^{p,N,n}=\frac{1}{N}\frac{\sin(\frac{np(k-l)\pi}{N})}{\sin(\frac{p(k-l)\pi}{N})}e^{\frac{i p(n-1)(k-l)\pi}{N}}$ and $K_{kk}^{p,N,n}=\frac{n}{N}$.
+Let $p,N,n$ be three integers such that $n \leq N$ and $p$ and $N$ are prime. There exists a __projection__ matrix $K^{p,N,n}$ such that $K_{kl}^{p,N,n}=\frac{1}{N}\frac{\sin(\frac{np(k-l)\pi}{N})}{\sin(\frac{p(k-l)\pi}{N})}\exp({\frac{i p(n-1)(k-l)\pi}{N}})$ and $K_{kk}^{p,N,n}=\frac{n}{N}$.
 `Periodic_Dsd` provides both $K^{p,N,n}$ and a set of eigenvectors $\overline{\Phi^{p,N,n}}^\intercal$ that can be directly used in `Drawing_Dsd`. The $k^{th}$ colum of $\Phi^{p,N,n}$ is given by $\varphi_k^{p,N,n}=((z^{k})^0,\cdots,(z^k)^{j},\cdots,(z^{k})^{n-1})^\intercal/\sqrt{N}$.
 
 ```
